@@ -1,8 +1,16 @@
+@import url(https://fonts.bunny.net/css?family=chewy:400|fredoka:400|fredoka-one:400|raleway:400);
+
 :root {
     --font-size-default: 16px;
     --header-height: 80px;
     --subheader-height: 120px;
     --header-padding-sides: clamp(10px, (100% - 460px - 20px) * 0.5, 2rem); /* full - max - padding *2 */
+    
+    --logo-font: 'Chewy', display;
+    --menu-font: 'Fredoka One', display;
+    --greeting-font:'Fredoka', sans-serif;
+    --header-font: 'Fredoka', sans-serif;
+    --content-font: 'Raleway', sans-serif;
     --primary: #ffffff;
 }
 
@@ -12,10 +20,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    background-color: white !important;
 }
 
 html {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: var(--content-font);
     font-size: var(--font-size-default);
 }
 
@@ -30,6 +39,17 @@ a {
 svg {
     min-width: 1.5rem;
     max-width: 2.5rem;
+}
+
+h1, h2 {
+    font-family: var(--header-font);
+    margin-bottom: 0;
+}
+
+button {
+    padding: 0.6rem;
+    font-size: 1.4rem;
+    font-family: var(--greeting-font);
 }
 
 .iconName-elem {
@@ -69,7 +89,11 @@ div.mainContainer {
 
     display: flex;
     padding: 0.6rem;
-    font-size: 1.8rem;
+
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    font-family: var(--logo-font);
+    letter-spacing: 0.1rem;
 }
 
 .logo a {
@@ -100,8 +124,13 @@ header ul {
     align-items: center;
 }
 
+.searchBar {
+    gap: 3px;
+}
+
 .searchBar svg {
-    max-width: 2rem;
+    display: block;
+    max-width: 1.8rem;
 }
 
 .searchBar input {
@@ -114,14 +143,18 @@ header ul {
     margin-right: 2px;
 }
 
-.profile-profileLink > svg {
-    max-width: 1rem;
+.profile-profileLink svg {
+    min-width: 1rem;
 }
 
 nav {
     background-color: burlywood;
 
     grid-area: nav;
+    padding-left: calc(7% + 6px);
+
+    font-family: var(--menu-font);
+    font-size: 1.2rem;
 }
 
 nav > div {
@@ -133,6 +166,8 @@ nav > div {
     position: sticky;
     top: var(--header-height);
     height: calc(100vh - var(--header-height) - 28px);
+
+    overflow-y: auto;
 }
 
 nav svg {
@@ -140,9 +175,8 @@ nav svg {
 }
 
 nav a {
-    gap: 0.4rem;
+    gap: 0.6rem;
     padding: 0.2rem 0;
-    padding-left: 0.6rem;
 }
 
 .logOut {
@@ -191,23 +225,38 @@ section.manage {
 .manage-greeting {
     display: flex;
     flex-flow: column;
-    gap: 0.8rem;
+    gap: 0.4rem;
+
+    font-family: var(--greeting-font);
+    font-size: 1rem;
 }
 
 .manage-greeting > .userName-label {
     display: block;
     font-size: 1.6rem;
+    font-weight: 600;
 }
 
 .manage-project {
+    flex-basis: 32rem;
+
     display: flex;
-    gap: 0.4rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
 }
 
 .manage-project > button {
+    flex: 1;
+
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
+}
+
+.manage-project > button > svg {
+    min-width: 1rem;
+    max-width: 1.8rem;
 }
 
 section.projectsGrid {
@@ -270,18 +319,17 @@ aside > * {
     overflow: hidden;
 }
 
-aside h2 {
-    margin-top: 0.7rem;
+aside h1 {
     margin-bottom: 0.3rem;
 }
 
-aside h2+div {
+aside h1+div {
     background-color: mediumaquamarine;
 
     padding: 0.8rem;
 }
 
-.statsInfo h2 {
+.statsInfo h1 {
     display: flex;
     align-items: flex-end;
 
