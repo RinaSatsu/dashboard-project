@@ -1,5 +1,13 @@
 @import url(https://fonts.bunny.net/css?family=chewy:400|fredoka:400|fredoka-one:400|raleway:400);
 
+/* #FFC861
+#FF9670
+#FF7092
+#54423B
+#9C27B0
+#70D9FF*/
+
+
 :root {
     --font-size-default: 16px;
     --header-height: 80px;
@@ -8,10 +16,47 @@
     
     --logo-font: 'Chewy', display;
     --menu-font: 'Fredoka One', display;
-    --greeting-font:'Fredoka', sans-serif;
     --header-font: 'Fredoka', sans-serif;
+    --greeting-font:'Fredoka', sans-serif;
+    --button-font: 'Fredoka One', sans-serif;
     --content-font: 'Raleway', sans-serif;
-    --primary: #ffffff;
+
+    --white: #ffffff;
+
+    --primary: #ff9671;
+    --primary-100: #fff3ee;
+    --primary-200: #ffd1be;
+    --primary-300: #ffb99e;
+    --primary-400: #c88d78;
+    --primary-500: #ac887b;
+    --primary-600: #8f837e;
+    --primary-700: #a3624a;
+    --primary-800: #503227;
+    --primary-900: #1f1612;
+
+    --secondary: #1f2f35;
+    --secondary-300: #2e444d;
+    --secondary-500: #13191b;
+
+    --tertiary-1: #ff6f91;
+    --tertiary-1-700: #e93c65;
+    --tertiary-1-800: #e00328;
+    --tertiary-2: #ffc75f;
+
+    --shaded-100: #ebe8e7;
+    --shaded-200: #d7d1d2;
+    --shaded-300: #b0a6a2;
+    --shaded-400: #776862;
+    --shaded-500: #54423b;
+    --shaded-600: #42342f;
+    --shaded-700: #28201e;
+    --shaded-800: #181412;
+    --shaded-900: #0e0b0a;
+    --accent: #ab47bc;
+    --accent-700: #782386;
+
+    --standard-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25);
+    --gradient:  var(--tertiary-1) 5%, var(--primary) 50%, var(--tertiary-2) 95%;
 }
 
 *,
@@ -20,7 +65,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: white !important;
 }
 
 html {
@@ -28,12 +72,17 @@ html {
     font-size: var(--font-size-default);
 }
 
+body {
+    color: var(--secondary);
+    background-color: var(--white);
+}
+
 ul > li {
     list-style: none;
 }
 
 a {
-    text-decoration: none;
+    color: var(--accent-700);
 }
 
 svg {
@@ -48,13 +97,25 @@ h1, h2 {
 
 button {
     padding: 0.6rem;
+    border: none;
+    border-radius: 1.6rem;
+    cursor: pointer;
+    vertical-align: middle;
+
     font-size: 1.4rem;
-    font-family: var(--greeting-font);
+    font-family: var(--button-font);
+    color: inherit;
+    background-color: var(--primary);
+    box-shadow: var(--standard-shadow);
+    transition: all 0.3s;
+}
+
+button:active {
+    transform: translate(1px, 3px);
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.25);
 }
 
 .iconName-elem {
-    background-color: violet;
-
     display: flex;
     align-items: center;
 }
@@ -70,6 +131,43 @@ button {
     border-radius: 50%;
 }
 
+.card {
+    padding: 0.8rem;
+
+    border-radius: 1rem;
+    background-color: var(--white);
+    box-shadow: 1px 4px 5px 3px rgba(0, 0, 0, 0.25);
+}
+
+.cardFancy {
+    padding: 0;
+    margin: 0;
+    transition: all 0.3s;
+}
+
+.cardFancy > * {
+    padding: 0 1.2rem;
+}
+
+.cardFancy > *:first-child {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+
+    background-color: var(--primary);
+    background: -moz-linear-gradient(left, var(--gradient));
+    background: -webkit-linear-gradient(left, var(--gradient));
+    background: linear-gradient(to right, var(--gradient));
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.cardFancy > *:last-child {
+    padding-bottom: 0.8rem;
+}
+
 div.mainContainer {
     display: grid;
     grid-template-columns: minmax(200px, 1fr) 4fr 1fr;
@@ -77,12 +175,10 @@ div.mainContainer {
     grid-template-areas:
         'logo   header header'
         'nav    main   main'
-        'footer footer footer';
+        'nav    footer footer';
 }
 
 .logo {
-    background-color: darkorange;
-
     position: sticky;
     top: 0;
     grid-area: logo;
@@ -90,18 +186,61 @@ div.mainContainer {
     display: flex;
     padding: 0.6rem;
 
+    background-color: var(--primary);
+
     font-size: 1.7rem;
     text-transform: uppercase;
     font-family: var(--logo-font);
     letter-spacing: 0.1rem;
+    z-index: 2;
 }
 
 .logo a {
     gap: 0.4rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+nav {
+    background-color: var(--primary);
+
+    grid-area: nav;
+
+    font-family: var(--menu-font);
+    font-size: 1.4rem;
+    z-index: 1;
+}
+
+nav > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height) - 0.6rem);
+
+    overflow-y: auto;
+}
+
+nav a {
+    gap: 0.6rem;
+    padding: 0.2rem 0;
+    padding-left: calc(7% + 6px);
+    color: inherit;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+nav svg {
+    max-width: 40px;
+}
+
+.logOut {
+    margin-top: auto;
 }
 
 header {
-    background-color: rosybrown;
     position: sticky;
     top: 0;
     grid-area: header;
@@ -114,11 +253,12 @@ header {
     padding: 0 var(--header-padding-sides);
     padding-top: 0.6rem;
     padding-bottom: 0.4rem;
+
+    background-color: var(--white);
+    z-index: 1;
 }
 
 header ul {
-    background-color: honeydew;
-
     display: flex;
     gap: 0.6rem;
     align-items: center;
@@ -136,6 +276,12 @@ header ul {
 .searchBar input {
     width: max(6rem, 100%);
     padding: 0.4rem;
+    border: none;
+    border-radius: 0.8rem;
+    color: inherit;
+    background-color: var(--shaded-100);
+
+    transition: all 0.3s;
 }
 
 .profile-notifications {
@@ -147,45 +293,7 @@ header ul {
     min-width: 1rem;
 }
 
-nav {
-    background-color: burlywood;
-
-    grid-area: nav;
-    padding-left: calc(7% + 6px);
-
-    font-family: var(--menu-font);
-    font-size: 1.2rem;
-}
-
-nav > div {
-    background-color: antiquewhite;
-    display: flex;
-    flex-direction: column;
-    gap: 1.4rem;
-
-    position: sticky;
-    top: var(--header-height);
-    height: calc(100vh - var(--header-height) - 28px);
-
-    overflow-y: auto;
-}
-
-nav svg {
-    max-width: 40px;
-}
-
-nav a {
-    gap: 0.6rem;
-    padding: 0.2rem 0;
-}
-
-.logOut {
-    margin-top: auto;
-}
-
 main {
-    background-color: indianred;
-
     grid-area: main;
     display: grid;
     grid-template-columns: subgrid;
@@ -196,11 +304,11 @@ main {
         'projects aside ';
     column-gap: min(1.4rem, 2%);
     padding-bottom: 1rem;
+
+    background-color: var(--shaded-100);
 }
 
 section.manage {
-    background-color: coral;
-
     grid-area: manage;
 
     display: flex;
@@ -208,9 +316,13 @@ section.manage {
     align-items: center;
     gap: 0.8rem;
 
+    overflow: hidden;
     padding: 0 var(--header-padding-sides);
     padding-top: 0.2rem;
     padding-bottom: 0.8rem;
+
+    box-shadow: 0px 5px 6px 1px rgba(0, 0, 0, 0.25);
+    background-color: var(--white);
 }
 
 .manage > .iconName-elem {
@@ -218,7 +330,6 @@ section.manage {
 }
 
 .manage .memberIcon {
-    background-color: blueviolet;
     max-width: calc(var(--subheader-height) - 1rem);
 }
 
@@ -269,8 +380,6 @@ section.projectsGrid {
 }
 
 .projectsGrid > div {
-    background-color: goldenrod;
-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-auto-rows: minmax(200px, max-content);
@@ -278,13 +387,9 @@ section.projectsGrid {
 }
 
 .projectsGrid-projectCard {
-    background-color: lightcoral;
-
     display: flex;
     flex-flow: column;
     gap: 0.8rem;
-
-    padding: 0.8rem 1.2rem;
 }
 
 .projectsGrid-projectCard > p {
@@ -300,11 +405,10 @@ section.projectsGrid {
 
 .projectActions svg {
     width: 30px;
+    color: var(--tertiary-1-700);
 }
 
 aside {
-    background-color: lightpink;
-
     grid-area: aside;
 
     display: flex;
@@ -313,32 +417,19 @@ aside {
     margin-right: 0.8rem;
 }
 
-aside > * {
-    background-color: lemonchiffon;
-
-    overflow: hidden;
-}
-
 aside h1 {
     margin-bottom: 0.3rem;
-}
-
-aside h1+div {
-    background-color: mediumaquamarine;
-
-    padding: 0.8rem;
 }
 
 .statsInfo h1 {
     display: flex;
     align-items: flex-end;
 
-    margin-top: 0;
-    min-height: 3.7rem;
+    margin-top: 0.4rem;
+    min-height: 3.3rem;
 }
 
 .statsInfo > div {
-    background-color: aquamarine;
     aspect-ratio: 1 / 1;
 }
 
@@ -347,10 +438,11 @@ aside h1+div {
 }
 
 footer {
-    background-color: khaki;
-
     grid-area: footer;
     padding: 4px;
 
     text-align: center;
+
+    background-color: var(--primary-300);
 }
+
