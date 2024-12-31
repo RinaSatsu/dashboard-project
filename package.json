@@ -1,0 +1,19 @@
+{
+  "name": "dashboard-project",
+  "version": "1.0.0",
+  "description": "Mock-up dashboard web-page for managing projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RinaSatsu/dashboard-project.git"
+  },
+  "author": "RinaSatsu (Maryna Snihurska)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RinaSatsu/dashboard-project/issues"
+  },
+  "homepage": "https://github.com/RinaSatsu/dashboard-project#readme"
+}
