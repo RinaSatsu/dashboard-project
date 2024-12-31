@@ -7,7 +7,6 @@
 #9C27B0
 #70D9FF*/
 
-
 :root {
     --font-size-default: 16px;
     --header-height: 80px;
@@ -27,7 +26,7 @@
     --primary-100: #fff3ee;
     --primary-200: #ffd1be;
     --primary-300: #ffb99e;
-    --primary-400: #c88d78;
+    --primary-400: #f57d51;
     --primary-500: #ac887b;
     --primary-600: #8f837e;
     --primary-700: #a3624a;
@@ -41,7 +40,11 @@
     --tertiary-1: #ff6f91;
     --tertiary-1-700: #e93c65;
     --tertiary-1-800: #e00328;
+    --tertiary-1-900: #AD0B31;
     --tertiary-2: #ffc75f;
+    --tertiary-2-100: #fff3dc;
+    --tertiary-2-200: #ffe0a8;
+    --tertiary-2-300: #ffd485;
 
     --shaded-100: #ebe8e7;
     --shaded-200: #d7d1d2;
@@ -60,8 +63,8 @@
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -276,6 +279,7 @@ header ul {
 .searchBar input {
     width: max(6rem, 100%);
     padding: 0.4rem;
+
     border: none;
     border-radius: 0.8rem;
     color: inherit;
@@ -429,12 +433,115 @@ aside h1 {
     min-height: 3.3rem;
 }
 
-.statsInfo > div {
+.doughnutChart {
+    --percentage-done: 65;
+    --percentage-prog: 25;
+    --percentage-todo: 15;
+    margin-bottom: 0.8rem;
     aspect-ratio: 1 / 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(var(--tertiary-1-700) calc(var(--percentage-done) * 1%),
+     var(--primary) 0 calc((var(--percentage-done) + var(--percentage-prog)) * 1%),
+     var(--tertiary-2-300) 0);
+    border-radius: 50%;
+}
+
+.doughnutChart::before {
+    content: "";
+    position: absolute;
+    left: 15%;
+    top: 15%;
+    display: inline-block;
+    background-color: white;
+    height: 70%;
+    width: 70%;
+    border-radius: 50%;
+}
+
+.doughnutChart > div {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    line-height: 0.9;
+    z-index: 1;
+}
+
+.doughnutChart span {
+    font-size: 2rem;
+    font-family: var(--header-font);
+    font-weight: 600;
+}
+
+.chart-key {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.chart-key span {
+    display: inline-block;
+    padding: 0.2rem;
+    padding-top: 0.3rem;
+    height: 1.8rem;
+    font-weight: 700;
+    vertical-align: middle;
+    border: 1px solid var(--shaded-300);
+}
+
+span.pink {
+    background-color: var(--tertiary-1-700);
+}
+
+span.orange {
+    background-color: var(--primary);
+}
+
+span.yellow {
+    background-color: var(--tertiary-2-200);
 }
 
 .taskList ol {
-    padding-left: 1rem;
+    font-size: 1.2rem;
+    list-style: none;
+    counter-reset: tl-counter;
+}
+
+.taskList li::before {
+    content: counter(tl-counter);
+
+    color: var(--tertiary-1-900);
+    font-size: 1.4rem;
+    font-family: var(--header-font);
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    text-align: center;
+    line-height: 1.25;
+    margin-right: 0.6rem;
+    border: 2px solid var(--tertiary-1);
+    border-radius: 50%;
+}
+
+.taskList li:first-of-type:before {
+    text-align: left;
+    padding-left: 0.5rem;
+}
+
+.taskList li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--shaded-200);
+    counter-increment: tl-counter;
+    display: flex;
+    align-items: center;
+}
+
+.taskList li:last-of-type {
+    border-bottom: none;
 }
 
 footer {
