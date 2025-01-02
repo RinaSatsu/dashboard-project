@@ -88,6 +88,10 @@ a {
     color: var(--accent-700);
 }
 
+a:hover {
+    color: var(--accent);
+}
+
 svg {
     min-width: 1.5rem;
     max-width: 2.5rem;
@@ -111,6 +115,11 @@ button {
     background-color: var(--primary);
     box-shadow: var(--standard-shadow);
     transition: all 0.3s;
+}
+
+button:hover {
+    color: var(--secondary-300);
+    background-color: var(--primary-300);
 }
 
 button:active {
@@ -146,6 +155,10 @@ button:active {
     padding: 0;
     margin: 0;
     transition: all 0.3s;
+}
+
+.cardFancy:hover {
+    transform: scale(1.01) translateY(-2px);
 }
 
 .cardFancy > * {
@@ -198,6 +211,10 @@ div.mainContainer {
     z-index: 2;
 }
 
+.logo:hover {
+    color: var(--secondary-300);
+}
+
 .logo a {
     gap: 0.4rem;
     color: inherit;
@@ -233,6 +250,13 @@ nav a {
     color: inherit;
     transition: all 0.2s;
     text-decoration: none;
+}
+
+nav a:hover,
+.selectedMenu {
+    color: var(--accent);
+    background-color: var(--primary-100);
+    border-right: 6px solid var(--accent);
 }
 
 nav svg {
@@ -279,7 +303,6 @@ header ul {
 .searchBar input {
     width: max(6rem, 100%);
     padding: 0.4rem;
-
     border: none;
     border-radius: 0.8rem;
     color: inherit;
@@ -410,6 +433,10 @@ section.projectsGrid {
 .projectActions svg {
     width: 30px;
     color: var(--tertiary-1-700);
+}
+
+.projectActions svg:hover {
+    color: var(--tertiary-1-800);
 }
 
 aside {
