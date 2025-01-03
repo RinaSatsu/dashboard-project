@@ -7,7 +7,6 @@
 #9C27B0
 #70D9FF*/
 
-
 :root {
     --font-size-default: 16px;
     --header-height: 80px;
@@ -19,7 +18,7 @@
     --header-font: 'Fredoka', sans-serif;
     --greeting-font:'Fredoka', sans-serif;
     --button-font: 'Fredoka One', sans-serif;
-    --content-font: 'Raleway', sans-serif;
+    --content-font: 'Raleway', sans-serif; /* replace */
 
     --white: #ffffff;
 
@@ -28,8 +27,8 @@
     --primary-200: #ffd1be;
     --primary-300: #ffb99e;
     --primary-400: #f57d51;
-    --primary-500: #ac887b;
-    --primary-600: #8f837e;
+    --primary-500: #e5784e;
+    --primary-600: #b4472f;
     --primary-700: #a3624a;
     --primary-800: #503227;
     --primary-900: #1f1612;
@@ -39,28 +38,92 @@
     --secondary-500: #13191b;
 
     --tertiary-1: #ff6f91;
-    --tertiary-1-700: #e93c65;
+    --tertiary-1-300: #ffb3c1;
+    --tertiary-1-400: #e93c65; 
+    --tertiary-1-500: #dc3b61;
+    --tertiary-1-600: #bb274a;
     --tertiary-1-800: #e00328;
-    --tertiary-1-900: #AD0B31;
+    --tertiary-1-900: #ad0b31;
+
     --tertiary-2: #ffc75f;
     --tertiary-2-100: #fff3dc;
     --tertiary-2-200: #ffe0a8;
-    --tertiary-2-300: #ffd485;
+    --tertiary-2-400: #ffd485;
+    --tertiary-2-500: #e2b25c;
+    --tertiary-2-600: #bd8113;
 
     --shaded-100: #ebe8e7;
     --shaded-200: #d7d1d2;
     --shaded-300: #b0a6a2;
     --shaded-400: #776862;
     --shaded-500: #54423b;
-    --shaded-600: #42342f;
-    --shaded-700: #28201e;
-    --shaded-800: #181412;
-    --shaded-900: #0e0b0a;
+    --shaded-600: #322520;
+    --shaded-700: #4f4846;
+    --shaded-800: #2f2c2b;
+    --shaded-900: #1f1e1d;
+
     --accent: #ab47bc;
+    --accent-200: #e2bae5;
+    --accent-300: #cc8dd4;
+    --accent-500: #e048f4;
     --accent-700: #782386;
 
     --standard-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25);
-    --gradient:  var(--tertiary-1) 5%, var(--primary) 50%, var(--tertiary-2) 95%;
+
+    --text-color: var(--secondary);
+    --background: var(--white); /* card-back, header-back, manage-back */
+    --nav-back: var(--primary); /* +button */
+    --main-back: var(--shaded-100);
+    --link-col: var(--accent-700);
+    --link-hover: var(--accent);
+    --logo-hover: var(--secondary-300);
+    --nav-hover-back: var(--primary-100);
+    --nav-hover-text: var(--accent);
+    --searchbar-back: var(--shaded-100);
+    --button-hover: var(--primary-300);
+    --button-hover-text: var(--secondary-300);
+    --actions-col: var(--tertiary-1-400);
+    --actions-hover-col: var(--tertiary-1-800);
+    --chart-done: var(--tertiary-1-400);
+    --chart-prog: var(--primary);
+    --chart-todo: var(--tertiary-2-400);
+    --task-num: var(--tertiary-1-900);
+    --task-num-border: var(--tertiary-1);
+    --task-delimeter: var(--shaded-200);
+    --footer-back: var(--primary-300);
+
+    --card-gradient:  var(--tertiary-1) 5%, var(--primary) 50%, var(--tertiary-2) 95%;
+
+    --theme: 'light';
+}
+
+@media (prefers-color-scheme: dark) 
+  :root {
+    --text-color: var(--primary-100);
+    --background: var(--shaded-800); /* card-back, header-back, manage-back */
+    --nav-back: var(--primary-600); /* +button */
+    --main-back: var(--shaded-900);
+    --link-col: var(--accent-300);
+    --link-hover: var(--accent-200);
+    --logo-hover: var(--primary-300);
+    --nav-hover-back: var(--shaded-600);
+    --nav-hover-text: var(--accent-500);
+    --searchbar-back: var(--shaded-700);
+    --button-hover: var(--primary-500);
+    --button-hover-text: var(--secondary-300);
+    --actions-col: var(--tertiary-1-400);
+    --actions-hover-col: var(--tertiary-1);
+    --chart-done: var(--tertiary-1-500);
+    --chart-prog: var(--primary-500);
+    --chart-todo: var(--tertiary-2-500);
+    --task-num: var(--white);
+    --task-num-border: var(--tertiary-1-300);
+    --task-delimeter: var(--shaded-700);
+    --footer-back: var(--shaded-700);
+
+    --card-gradient:  var(--tertiary-1-600) 5%, var(--primary-600) 50%, var(--tertiary-2-600) 95%;
+
+    --theme: 'dark';
 }
 
 *,
@@ -77,8 +140,8 @@ html {
 }
 
 body {
-    color: var(--secondary);
-    background-color: var(--white);
+    color: var(--text-color);
+    background-color: var(--background);
 }
 
 ul > li {
@@ -86,11 +149,11 @@ ul > li {
 }
 
 a {
-    color: var(--accent-700);
+    color: var(--link-col);
 }
 
 a:hover {
-    color: var(--accent);
+    color: var(--link-hover);
 }
 
 svg {
@@ -113,14 +176,14 @@ button {
     font-size: 1.4rem;
     font-family: var(--button-font);
     color: inherit;
-    background-color: var(--primary);
+    background-color: var(--nav-back);
     box-shadow: var(--standard-shadow);
     transition: all 0.3s;
 }
 
 button:hover {
-    color: var(--secondary-300);
-    background-color: var(--primary-300);
+    color: var(--button-hover-text);
+    background-color: var(--button-hover);
 }
 
 button:active {
@@ -148,7 +211,7 @@ button:active {
     padding: 0.8rem;
 
     border-radius: 1rem;
-    background-color: var(--white);
+    background-color: var(--background);
     box-shadow: 1px 4px 5px 3px rgba(0, 0, 0, 0.25);
 }
 
@@ -173,10 +236,10 @@ button:active {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
 
-    background-color: var(--primary);
-    background: -moz-linear-gradient(left, var(--gradient));
-    background: -webkit-linear-gradient(left, var(--gradient));
-    background: linear-gradient(to right, var(--gradient));
+    background-color: var(--nav-back);
+    background: -moz-linear-gradient(left, var(--card-gradient));
+    background: -webkit-linear-gradient(left, var(--card-gradient));
+    background: linear-gradient(to right, var(--card-gradient));
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
@@ -203,7 +266,7 @@ div.mainContainer {
     display: flex;
     padding: 0.6rem;
 
-    background-color: var(--primary);
+    background-color: var(--nav-back);
 
     font-size: 1.7rem;
     text-transform: uppercase;
@@ -213,7 +276,7 @@ div.mainContainer {
 }
 
 .logo:hover {
-    color: var(--secondary-300);
+    color: var(--logo-hover);
 }
 
 .logo a {
@@ -223,7 +286,7 @@ div.mainContainer {
 }
 
 nav {
-    background-color: var(--primary);
+    background-color: var(--nav-back);
 
     grid-area: nav;
 
@@ -255,9 +318,9 @@ nav a {
 
 nav a:hover,
 .selectedMenu {
-    color: var(--accent);
-    background-color: var(--primary-100);
-    border-right: 6px solid var(--accent);
+    color: var(--nav-hover-text);
+    background-color: var(--nav-hover-back);
+    border-right: 6px solid var(--nav-hover-text);
 }
 
 nav svg {
@@ -282,7 +345,7 @@ header {
     padding-top: 0.6rem;
     padding-bottom: 0.4rem;
 
-    background-color: var(--white);
+    background-color: var(--background);
     z-index: 1;
 }
 
@@ -307,7 +370,7 @@ header ul {
     border: none;
     border-radius: 0.8rem;
     color: inherit;
-    background-color: var(--shaded-100);
+    background-color: var(--searchbar-back);
 
     transition: all 0.3s;
 }
@@ -333,7 +396,7 @@ main {
     column-gap: min(1.4rem, 2%);
     padding-bottom: 1rem;
 
-    background-color: var(--shaded-100);
+    background-color: var(--main-back);
 }
 
 section.manage {
@@ -350,7 +413,7 @@ section.manage {
     padding-bottom: 0.8rem;
 
     box-shadow: 0px 5px 6px 1px rgba(0, 0, 0, 0.25);
-    background-color: var(--white);
+    background-color: var(--background);
 }
 
 .manage > .iconName-elem {
@@ -433,11 +496,11 @@ section.projectsGrid {
 
 .projectActions svg {
     width: 30px;
-    color: var(--tertiary-1-700);
+    color: var(--actions-col);
 }
 
 .projectActions svg:hover {
-    color: var(--tertiary-1-800);
+    color: var(--actions-hover-col);
 }
 
 aside {
@@ -470,9 +533,9 @@ aside h1 {
     position: relative;
     width: 100%;
     height: 100%;
-    background: conic-gradient(var(--tertiary-1-700) calc(var(--percentage-done) * 1%),
-     var(--primary) 0 calc((var(--percentage-done) + var(--percentage-prog)) * 1%),
-     var(--tertiary-2-300) 0);
+    background: conic-gradient(var(--chart-done) calc(var(--percentage-done) * 1%),
+     var(--chart-prog) 0 calc((var(--percentage-done) + var(--percentage-prog)) * 1%),
+     var(--chart-todo) 0);
     border-radius: 50%;
 }
 
@@ -482,7 +545,7 @@ aside h1 {
     left: 15%;
     top: 15%;
     display: inline-block;
-    background-color: white;
+    background-color: var(--background);
     height: 70%;
     width: 70%;
     border-radius: 50%;
@@ -522,15 +585,15 @@ aside h1 {
 }
 
 span.pink {
-    background-color: var(--tertiary-1-700);
+    background-color: var(--chart-done);
 }
 
 span.orange {
-    background-color: var(--primary);
+    background-color: var(--chart-prog);
 }
 
 span.yellow {
-    background-color: var(--tertiary-2-200);
+    background-color: var(--chart-todo);
 }
 
 .taskList ol {
@@ -542,7 +605,7 @@ span.yellow {
 .taskList li::before {
     content: counter(tl-counter);
 
-    color: var(--tertiary-1-900);
+    color: var(--task-num);
     font-size: 1.4rem;
     font-family: var(--header-font);
     width: 2rem;
@@ -551,7 +614,7 @@ span.yellow {
     text-align: center;
     line-height: 1.25;
     margin-right: 0.6rem;
-    border: 2px solid var(--tertiary-1);
+    border: 2px solid var(--task-num-border);
     border-radius: 50%;
 }
 
@@ -562,7 +625,7 @@ span.yellow {
 
 .taskList li {
     padding: 0.8rem 0;
-    border-bottom: 1px solid var(--shaded-200);
+    border-bottom: 1px solid var(--task-delimeter);
     counter-increment: tl-counter;
     display: flex;
     align-items: center;
@@ -578,6 +641,6 @@ footer {
 
     text-align: center;
 
-    background-color: var(--primary-300);
+    background-color: var(--footer-back);
 }
 

@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artwork Used | Pawprint Projects</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <style>
+        :root {
+            --back: var(--primary-100);
+        }
+
+        @media(prefers-color-scheme: dark)
+	  :root {
+            --back: var(--shaded-800);
+        }
+
         body {
-            background-color: var(--primary-100);
+            background-color: var(--back);
             padding: 1rem;
         }
 
@@ -21,15 +30,15 @@
             font-size: 1.4rem;
             font-family: var(--button-font);
             color: inherit;
-            background-color: var(--primary);
+            background-color: var(--nav-back);
             box-shadow: var(--standard-shadow);
             text-decoration: none;
             transition: all 0.3s;
         }
 
         .backButton:hover {
-            color: var(--secondary-300);
-            background-color: var(--primary-300);
+            color: var(--button-hover-text);
+            background-color: var(--button-hover);
         }
 
         .backButton:active {
