@@ -69,7 +69,9 @@
     --accent-700: #782386;
 
     --standard-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25);
+}
 
+[data-theme='light'] {
     --text-color: var(--secondary);
     --background: var(--white); /* card-back, header-back, manage-back */
     --nav-back: var(--primary); /* +button */
@@ -97,8 +99,7 @@
     --theme: 'light';
 }
 
-@media (prefers-color-scheme: dark) 
-  :root {
+[data-theme='dark'] {
     --text-color: var(--primary-100);
     --background: var(--shaded-800); /* card-back, header-back, manage-back */
     --nav-back: var(--primary-600); /* +button */
@@ -159,6 +160,7 @@ a:hover {
 svg {
     min-width: 1.5rem;
     max-width: 2.5rem;
+    display: block;
 }
 
 h1, h2 {
@@ -360,7 +362,6 @@ header ul {
 }
 
 .searchBar svg {
-    display: block;
     max-width: 1.8rem;
 }
 
@@ -371,8 +372,6 @@ header ul {
     border-radius: 0.8rem;
     color: inherit;
     background-color: var(--searchbar-back);
-
-    transition: all 0.3s;
 }
 
 .profile-notifications {
@@ -642,5 +641,9 @@ footer {
     text-align: center;
 
     background-color: var(--footer-back);
+}
+
+.invisible {
+    display: none;
 }
 
