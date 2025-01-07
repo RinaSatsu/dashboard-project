@@ -14,11 +14,9 @@
     --header-padding-sides: clamp(10px, (100% - 460px - 20px) * 0.5, 2rem); /* full - max - padding *2 */
     
     --logo-font: 'Chewy', display;
-    --menu-font: 'Fredoka One', display;
+    --button-font: 'Fredoka One', display;
     --header-font: 'Fredoka', sans-serif;
-    --greeting-font:'Fredoka', sans-serif;
-    --button-font: 'Fredoka One', sans-serif;
-    --content-font: 'Raleway', sans-serif; /* replace */
+    --content-font: 'Raleway', sans-serif;
 
     --white: #ffffff;
 
@@ -292,7 +290,7 @@ nav {
 
     grid-area: nav;
 
-    font-family: var(--menu-font);
+    font-family: var(--button-font);
     font-size: 1.4rem;
     z-index: 1;
 }
@@ -428,7 +426,7 @@ section.manage {
     flex-flow: column;
     gap: 0.4rem;
 
-    font-family: var(--greeting-font);
+    font-family: var(--header-font);
     font-size: 1rem;
 }
 
