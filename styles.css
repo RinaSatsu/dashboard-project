@@ -62,9 +62,11 @@
 
     --accent: #ab47bc;
     --accent-200: #e2bae5;
+    --accent-200-focus: rgba(225, 185, 228, 0.8);
     --accent-300: #cc8dd4;
     --accent-500: #e048f4;
     --accent-700: #782386;
+    --accent-700-focus: rgba(131, 57, 143, 0.8);
 
     --standard-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.25);
 }
@@ -76,10 +78,12 @@
     --main-back: var(--shaded-100);
     --link-col: var(--accent-700);
     --link-hover: var(--accent);
+    --link-focus: var(--accent-700-focus);
     --logo-hover: var(--secondary-300);
     --nav-hover-back: var(--primary-100);
     --nav-hover-text: var(--accent);
     --searchbar-back: var(--shaded-100);
+    --searchbar-focus: var(--primary);
     --button-hover: var(--primary-300);
     --button-hover-text: var(--secondary-300);
     --actions-col: var(--tertiary-1-400);
@@ -104,10 +108,12 @@
     --main-back: var(--shaded-900);
     --link-col: var(--accent-300);
     --link-hover: var(--accent-200);
+    --link-focus: var(--accent-200-focus);
     --logo-hover: var(--primary-300);
     --nav-hover-back: var(--shaded-600);
     --nav-hover-text: var(--accent-500);
     --searchbar-back: var(--shaded-700);
+    --searchbar-focus: var(--primary-500);
     --button-hover: var(--primary-500);
     --button-hover-text: var(--secondary-300);
     --actions-col: var(--tertiary-1-400);
@@ -133,6 +139,10 @@
     padding: 0;
 }
 
+*:focus-visible {
+    transition: all 0.3s;
+}
+
 html {
     font-family: var(--content-font);
     font-size: var(--font-size-default);
@@ -149,16 +159,26 @@ ul > li {
 
 a {
     color: var(--link-col);
+    outline-color: transparent;
+    outline-width: 2px;
+    outline-style: dotted;
 }
 
-a:hover {
+a:hover,
+a:focus-visible {
     color: var(--link-hover);
+}
+
+a:focus-visible {
+    box-shadow: 0px 0px 1px 2px var(--link-focus);
+    border-radius: 2px;
 }
 
 svg {
     min-width: 1.5rem;
     max-width: 2.5rem;
     display: block;
+    pointer-events: none;
 }
 
 h1, h2 {
@@ -167,27 +187,48 @@ h1, h2 {
 }
 
 button {
-    padding: 0.6rem;
+    outline-color: transparent;
+    outline-width: 2px;
+    outline-style: dotted;
     border: none;
-    border-radius: 1.6rem;
     cursor: pointer;
     vertical-align: middle;
-
-    font-size: 1.4rem;
-    font-family: var(--button-font);
     color: inherit;
-    background-color: var(--nav-back);
-    box-shadow: var(--standard-shadow);
+    background-color: inherit;
     transition: all 0.3s;
 }
 
-button:hover {
+button:focus-visible {
+    box-shadow: var(--link-focus) 0 0 0 3px;
+}
+
+button:active, 
+button:active:not(:focus-visible) {
+    transform: translate(1px, 3px);
+}
+
+.button {
+    padding: 0.6rem;
+
+    border-radius: 1.6rem;
+    font-size: 1.4rem;
+    font-family: var(--button-font);
+    background-color: var(--nav-back);
+    box-shadow: var(--standard-shadow);
+}
+
+.button:hover,
+.button:focus-visible {
     color: var(--button-hover-text);
     background-color: var(--button-hover);
 }
 
-button:active {
-    transform: translate(1px, 3px);
+.button:focus:not(:focus-visible) {
+    box-shadow: var(--standard-shadow);
+}
+
+.button:active, 
+.button:active:not(:focus-visible) {
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -323,6 +364,13 @@ nav a:hover,
     border-right: 6px solid var(--nav-hover-text);
 }
 
+nav a:focus-visible {
+    color: var(--nav-hover-text);
+    background-color: var(--nav-hover-back);
+    box-shadow: 0px 0px 1px 2px var(--nav-hover-text) inset;
+    border-right: 6px solid var(--nav-hover-text);
+}
+
 nav svg {
     max-width: 40px;
 }
@@ -366,10 +414,23 @@ header ul {
 .searchBar input {
     width: max(6rem, 100%);
     padding: 0.4rem;
+
+    outline-color: transparent;
+    outline-width: 2px;
+    outline-style: dotted;
     border: none;
     border-radius: 0.8rem;
     color: inherit;
     background-color: var(--searchbar-back);
+}
+
+.searchBar input:focus {
+    box-shadow: var(--searchbar-focus) 0 0 1px 3px;
+}
+
+#themeSwitch {
+    padding: 0.2rem;
+    border-radius: 4px;
 }
 
 .profile-notifications {
@@ -491,12 +552,14 @@ section.projectsGrid {
     gap: 0.6rem;
 }
 
-.projectActions svg {
-    width: 30px;
+.projectActions button {
+    border-radius: 4px;
     color: var(--actions-col);
+    width: 30px;
 }
 
-.projectActions svg:hover {
+.projectActions button:hover,
+.projectActions button:focus-visible {
     color: var(--actions-hover-col);
 }
 

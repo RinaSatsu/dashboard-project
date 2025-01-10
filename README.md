@@ -7,6 +7,7 @@ This project is a mock-up for a web-based dashboard designed to display and mana
 The Dashboard Project was created to:
 
 * Practice building responsive layouts using CSS Grid and Flexbox.
+* Explore techniques to enhance accessibility and user experience.
 * Develop a visually appealing interface with modern design principles.
 
 ### Technologies Used
@@ -26,6 +27,13 @@ The Dashboard Project was created to:
 **Interactive Charts:** Includes a doughnut chart.
 
 **Hover Effects:** Engaging hover animations for better interactivity.
+
+**Accessibility Enhancements:** Improved navigation and readability for all users.
+
+### Accessibility Features
+* ARIA attributes for better screen reader support.
+* High contrast ratios for improved visibility.
+* Keyboard navigation support and focus effects for ease of use.
 
 ## How to Use
 1. Visit the website where the Dashboard Project is hosted OR Clone or download the repository and open the HTML file in your browser.

@@ -19,8 +19,8 @@ function ChangeColorTheme() {
 }
 
 function switchLike(event) {
-    let childList = event.srcElement.nodeName === 'path' ? 
-    event.srcElement.parentNode.parentNode.childNodes : event.srcElement.parentNode.childNodes;
+	console.log(event);
+    let childList = event.target.childNodes;
     childList[1].classList.toggle('invisible');
     childList[3].classList.toggle('invisible');
 
