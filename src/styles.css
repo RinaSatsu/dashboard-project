@@ -557,25 +557,33 @@ aside h1 {
     --percentage-todo: 15;
     position: relative;
     margin-bottom: 0.8rem;
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
     width: 100%;
     height: 100%;
-    background: conic-gradient(var(--chart-done) calc(var(--percentage-done) * 1%),
-     var(--chart-prog) 0 calc((var(--percentage-done) + var(--percentage-prog)) * 1%),
-     var(--chart-todo) 0);
+    background: linear-gradient(to right, var(--chart-done) calc(var(--percentage-done) * 1%),
+        var(--chart-prog) 0 calc((var(--percentage-done) + var(--percentage-prog)) * 1%),
+        var(--chart-todo) 0);
 }
 
-.doughnutChart::before {
-    content: "";
-    position: absolute;
-    left: 15%;
-    top: 15%;
-    display: inline-block;
-    border-radius: 50%;
-    height: 70%;
-    width: 70%;
-    background-color: var(--background);
+@supports (background: conic-gradient(black, white)) {
+    .doughnutChart {
+        border-radius: 50%;
+        aspect-ratio: 1 / 1;
+        background: conic-gradient(var(--chart-done) calc(var(--percentage-done) * 1%),
+        var(--chart-prog) 0 calc((var(--percentage-done) + var(--percentage-prog)) * 1%),
+        var(--chart-todo) 0);
+    }
+    
+    .doughnutChart::before {
+        content: "";
+        position: absolute;
+        left: 15%;
+        top: 15%;
+        display: inline-block;
+        border-radius: 50%;
+        height: 70%;
+        width: 70%;
+        background-color: var(--background);
+    }
 }
 
 .doughnutChart > div {
@@ -586,6 +594,7 @@ aside h1 {
     align-items: center;
     justify-content: center;
     height: 100%;
+    padding-top: 4px;
     line-height: 0.9;
 }
 
