@@ -30,6 +30,8 @@ The Dashboard Project was created to:
 
 **Accessibility Enhancements:** Improved navigation and readability for all users.
 
+**Cross-Browser Compatibility:** Optimized for modern browsers.
+
 ### Accessibility Features
 * ARIA attributes for better screen reader support.
 * High contrast ratios for improved visibility.
@@ -45,7 +47,10 @@ This project is for demonstration purposes and does not include backend function
 ## Feedback and Issues
 If you encounter any issues with this Dashboard Project or have suggestions for improvements, please open an issue on the GitHub repository. Your feedback is valuable and will help make this project even better.
 
-### Credits
+### Known Issues
+**Chart Rendering in Older Browsers:** The doughnut chart may not render properly in some older browsers. If this occurs, a fallback bar chart will be displayed to ensure functionality.
+
+## Credits
 This project was created with passion by Maryna Snihurska (aka RinaSatsu). Special thanks to The Odin Project for their idea of this project.
 
 Feel free to explore, adapt, and build upon this project to meet your needs!
