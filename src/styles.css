@@ -552,9 +552,9 @@ aside h1 {
 }
 
 .doughnutChart {
-    --percentage-done: 65;
-    --percentage-prog: 25;
-    --percentage-todo: 15;
+    --percentage-done: 60;
+    --percentage-prog: 30;
+    --percentage-todo: 10;
     position: relative;
     margin-bottom: 0.8rem;
     width: 100%;
@@ -588,7 +588,6 @@ aside h1 {
 
 .doughnutChart > div {
     position: relative;
-    z-index: 1;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -620,15 +619,15 @@ aside h1 {
     font-weight: 700;
 }
 
-span.pink {
+span.done {
     background-color: var(--chart-done);
 }
 
-span.orange {
+span.inProgress {
     background-color: var(--chart-prog);
 }
 
-span.yellow {
+span.notStarted {
     background-color: var(--chart-todo);
 }
 
