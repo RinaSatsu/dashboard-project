@@ -207,7 +207,6 @@ button:active:not(:focus-visible) {
     background-color: var(--nav-back);
     font-size: 1.4rem;
     font-family: var(--button-font);
-
 }
 
 .button:hover,
@@ -281,7 +280,7 @@ button:active:not(:focus-visible) {
 
 div.mainContainer {
     display: grid;
-    grid-template-columns: minmax(200px, 1fr) 4fr 1fr;
+    grid-template-columns: minmax(60px, max-content) 4fr 1fr;
     grid-template-rows: var(--header-height) 1fr auto;
     grid-template-areas:
         'logo   header header'
@@ -289,15 +288,32 @@ div.mainContainer {
         'nav    footer footer';
 }
 
+.sideContainer {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    grid-row: 1 / -1;
+    transition: max-width 0.4s ease-out;
+    max-width: 60px;
+    background-color: var(--nav-back);
+}
+
+.sideContainer:hover,
+.sideContainer:focus-within {
+    max-width: max(200px, 17vw);
+}
+
 .logo {
     position: sticky;
-    z-index: 2;
     top: 0;
+    z-index: 2;
     grid-area: logo;
     display: flex;
-    padding: 0.6rem;
+    overflow: hidden;
+    padding: 0.8rem 0.6rem 0.6rem 0.4rem;
     background-color: var(--nav-back);
     font-size: 1.7rem;
+    line-height: 0.9;
     font-family: var(--logo-font);
     text-transform: uppercase;
     letter-spacing: 0.1rem;
@@ -314,6 +330,8 @@ div.mainContainer {
 }
 
 nav {
+    position: sticky;
+    top: var(--header-height);
     z-index: 1;
     grid-area: nav;
     background-color: var(--nav-back);
@@ -322,8 +340,6 @@ nav {
 }
 
 nav > div {
-    position: sticky;
-    top: var(--header-height);
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
@@ -331,8 +347,14 @@ nav > div {
     height: calc(100vh - var(--header-height) - 0.6rem);
 }
 
+nav svg {
+    min-width: 40px;
+    max-width: 40px;
+}
+
 nav a {
     gap: 0.6rem;
+    overflow: hidden; 
     transition: all 0.2s;
     padding: 0.2rem 0;
     padding-left: calc(7% + 6px);
@@ -354,9 +376,6 @@ nav a:focus-visible {
     color: var(--nav-hover-text);
 }
 
-nav svg {
-    max-width: 40px;
-}
 
 .logOut {
     margin-top: auto;
